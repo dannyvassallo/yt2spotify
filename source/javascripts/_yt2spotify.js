@@ -55,7 +55,7 @@ function searchSpotify(items) {
         .replace(/lyric/ig, '');
 
 
-    load('http://ws.spotify.com/search/1/track.json?q=' + encodeURIComponent(name), function (e) {
+    load('https://ws.spotify.com/search/1/track.json?q=' + encodeURIComponent(name), function (e) {
         if (e.tracks && e.tracks[0]) {
             // console.log('success', name, e);
             // success
