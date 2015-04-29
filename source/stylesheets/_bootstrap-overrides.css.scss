@@ -1,6 +1,24 @@
 // navbar
 $navbar-height: 80px;
-
+.navbar-brand{
+  padding: 15px 15px !important;
+  i{
+    color: white;
+    font-size: 50px;
+    padding: 0 5px;
+    vertical-align: middle;
+  }
+  .fa.fa-spotify{
+    color: $green;
+  }
+  .fa.fa-youtube-square{
+    color: $red;
+  }
+  .fa.fa-arrow-right{
+    font-size: 20px !important;
+  }
+}
+$navbar-inverse-bg: black;
 // buttons
 $btn-success-color: #fff;
 $btn-success-bg: $green;
