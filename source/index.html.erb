@@ -6,10 +6,12 @@ title: Welcome to Middleman
   <div class="row">
     <div class="col-lg-12 text-center">
       <h1>YouTube to Spotify Playlist Converter</h1>
+      <br>
+      <button id="copy-button" class="hider btn btn-lg btn-success copy-btn" data-clipboard-target="clipboard-text">
+        <span><i class="fa fa-scissors"></i> Copy to Clipboard</span>
+      </button>
     </div>
-    <div class="col-lg-4">
-    </div>
-    <div class="col-lg-8 text-right">
+    <div class="col-lg-12 text-right">
       <h2>YouTube Playlist URL</h2>
       <div class="input-group">
         <input type="text" id="id" class="form-control input-lg" placeholder="Example: https://www.youtube.com/playlist?list=PLsBWlr67U5NuBMEj_p7n5WT-VeZ9VhmIz" />
@@ -20,19 +22,17 @@ title: Welcome to Middleman
         </span>
       </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
       <h2>Failed <span id="failed-count" class="count"></span></h2>
-      <textarea id="failed"></textarea>
+      <div id="failed" class="text-left"></div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
       <h2>Success <span id="success-count" class="count"></span></h2>
-      <textarea id="success"></textarea>
+      <div id="success" class="text-left"></div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+    <div class="list">
       <h2>Matches <span id="match-count" class="count"></span></h2>
       <textarea id="content" name="clipboard-text"></textarea>
-      <button id="copy-button" class="btn btn-lg btn-success copy-btn" data-clipboard-target="clipboard-text"><span><i class="fa fa-scissors"></i>
- Copy</span></button>
     </div>
   </div>
 </div>

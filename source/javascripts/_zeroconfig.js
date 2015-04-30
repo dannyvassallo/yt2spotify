@@ -21,7 +21,7 @@ function zcInit() {
             // Check if copied text is not empty
             if (event.data["text/plain"]) {
                 // Call something on successful copying
-                $(event.target).next().stop().css('opacity', 1).text('Copied!').fadeIn(30).fadeOut(1000);
+                $('#copy-button').html('You got it dude.')
             }
         });
     });

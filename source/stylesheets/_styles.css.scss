@@ -33,11 +33,15 @@ textarea{
   margin-top: 100px;
 }
 #failed-count{
-  color: red;
+  color: $red;
 }
 #success-count, #match-count{
   color: $green;
 }
 .copy-btn{
   margin-top: 15px;
+}
+.list,
+.hider{
+  display: none;
 }

@@ -4,7 +4,9 @@ var start = 1,
     matches = [],
     success = document.getElementById('success'),
     failed = document.getElementById('failed'),
-    content = document.getElementById('content');
+    content = document.getElementById('content'),
+    failedCount = 0,
+    matchCount = 0;
 
 function load(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -30,6 +32,7 @@ function loadPage(id) {
     }
     load('https://gdata.youtube.com/feeds/api/playlists/' + id + '?alt=jsonc&v=2&start-index=' + start + '&max-results=50', function (e) {
         // console.log('loadPage', e);
+        songCount = e.data.totalItems;
         if (e.data) {
             searchSpotify(e.data.items);
         }
@@ -46,12 +49,14 @@ function searchSpotify(items) {
         .replace(/feat/ig, '')
         .replace(/video/ig, '')
         .replace(/1080p/ig, '')
+        .replace(/720p/ig, '')
         .replace(/music/ig, '')
         .replace(/stream/ig, '')
         .replace(/glitch hop/ig, '')
         .replace(/download/, '')
         .replace(/free download/, '')
         .replace(/remix/, '')
+        .replace(/release/, '')
         .replace(/lyric/ig, '');
 
 
@@ -60,24 +65,25 @@ function searchSpotify(items) {
             // console.log('success', name, e);
             // success
             matches.push(e.tracks[0]);
-            success.innerHTML += name + '\n';
+            matchCount = matchCount + 1;
+            success.innerHTML += name + '<br>';
+            $('#success-count').html("("+matchCount+"/"+songCount +")");
             content.innerHTML += e.tracks[0].href + '\n';
+            removeHider();
         } else {
             // console.log('failt', name, e);
             // fail
             failedCount = failedCount + 1;
             // console.log(failedCount);
-            failed.innerHTML += name + '\n';
-            $('#failed-count').html("("+failedCount+")");
+            failed.innerHTML += name + '<br>';
+            $('#failed-count').html("("+failedCount+"/"+songCount +")");
+            removeHider();
         }
 
         if (index < items.length - 1) {
             index += 1;
             searchSpotify(items);
         } else {
-            var matchCount = matches.length;
-            $('#match-count').html("("+matchCount+")");
-            $('#success-count').html("("+matchCount+")");
             start += 50;
             index = 0;
             loadPage();
@@ -91,8 +97,9 @@ document.getElementById('submit').addEventListener('click', function () {
     loadPage();
 });
 
-// Fail Counter
-var failedCount = 0
-
-// copy text
-
+function removeHider(){
+    if ((failedCount + matchCount) == songCount){
+        console.log('chu');
+        $('#copy-button').removeClass('hider');
+    }
+}
